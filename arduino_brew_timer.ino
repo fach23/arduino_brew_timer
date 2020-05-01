@@ -1,8 +1,3 @@
-/*
-  BrewTimer for Espresso Machine.
-  by Fabian Christ
-*/
-
 #include "timer.h"
 #include <Wire.h>
 #include <Adafruit_GFX.h>
