@@ -5,7 +5,6 @@ This arduino-based brew timer can be used to monitor the extraction time when pr
 In order to build this brew timer several hardware components are needed.
 - Arduino Nano V3
 - OLED Display I2C 0.96 LCD 128X64 SSD1306
-- 1-Bit AC 220V Optokoppler Isolation Modul
 - Netzteil 5V 220V
 
 ## Functionality

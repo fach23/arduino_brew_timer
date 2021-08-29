@@ -11,7 +11,7 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, SCREEN_RESET);
 
 // Digital Input Signal (1-Bit AC 220V Optokoppler Isolation Modul)
-#define BREWING_SIGNAL 5
+#define BREWING_SIGNAL 2
 
 // Timer instance
 BrewTimer::Timer timer;
@@ -45,11 +45,9 @@ void drawScreenSaver()
 // Function which draws a coffe cup on display.
 void drawCoffeeCup() 
 {
-  delay(1000);
   display.clearDisplay();
   display.drawBitmap(0, 0, coffee_cup, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
   display.display();  
-  delay(5000);
 }
 
 // Arduino Setup Function
@@ -69,7 +67,7 @@ void setup()
 void loop()
 { 
   // read input signal
-  bool brewing = digitalRead(BREWING_SIGNAL) == HIGH;
+  bool brewing = digitalRead(BREWING_SIGNAL) == LOW;
   
   // brew timer logic
   if (brewing)
@@ -87,14 +85,18 @@ void loop()
   {
     if (timer.active())
     {
-      if (timer.elapsedTime() > 20000)
+      if (timer.elapsedTime() > 10000)
       {
+        delay(1000);
         drawCoffeeCup();
+        delay(5000);
       }
       
       timer.stop();
     }
-
-    drawScreenSaver();
+    else 
+    {
+      drawScreenSaver();
+    }
   }  
 }
